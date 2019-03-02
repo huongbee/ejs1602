@@ -17,10 +17,11 @@ app.get('/add',(req,res)=>{
     res.render('add');
 });
 app.post('/add-singer',(req,res)=>{
-    const {txtName, txtAvatar, txtLink} = req.body
-    res.send({
-        txtName, txtAvatar, txtLink
-    })
+    const { txtName, txtAvatar, txtLink } = req.body
+    const id = Math.floor(Math.random()*1000)
+    const singer = new Singer(id,txtName,txtAvatar,txtLink)
+    arrSinger.push(singer);
+    res.redirect('/')
 });
 
 app.listen(3000);

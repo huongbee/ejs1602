@@ -22,14 +22,17 @@
                     <th>Options</th>
                 </thead>
                 <tbody>
+                    <%
+                    arrSinger.forEach(singer=>{
+                    %>
                     <tr>
-                        <td>1</td>
-                        <td>John</td>
+                        <td><%=singer.id%></td>
+                        <td><%=singer.name%></td>
                         <td>
-                            <img src="https://photo-resize-zmp3.zadn.vn/w240h240_jpeg/avatars/c/7/2/5/c7251165037599f02bbcee8550b37c16.jpg" alt="">
+                            <img src="<%=domainImg+singer.avatar%>">
                         </td>
                         <td>
-                            <a href="">name</a>
+                            <a href="<%=domain+singer.link%>" target="_blank"><%=singer.name%></a>
                         </td>
                         <td>
                             <button style="width:100%" class="btn btn-warning">Update</button>
@@ -37,21 +40,9 @@
                             <button  style="width:100%" class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>John</td>
-                        <td>
-                            <img src="https://photo-resize-zmp3.zadn.vn/w240h240_jpeg/avatars/c/7/2/5/c7251165037599f02bbcee8550b37c16.jpg" alt="">
-                        </td>
-                        <td>
-                            <a href="">name</a>
-                        </td>
-                        <td>
-                            <button style="width:100%" class="btn btn-warning">Update</button>
-                            <br><br>
-                            <button  style="width:100%" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
+                    <% 
+                    })
+                    %>
                 </tbody>
             </table>
         </div>

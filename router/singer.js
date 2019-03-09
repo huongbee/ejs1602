@@ -30,5 +30,18 @@ router.get('/update/:id',(req,res)=>{
     !singer ? res.send({error:'Singer not found!'}) : res.render('update',{singer})
 });
 
+router.post('/update-singer',(req,res)=>{
+    const { txtId, txtName, txtAvatar, txtLink} = req.body
+    let singer = arrSinger.find(singer => singer.id == txtId)
+    if(!singer){
+        res.send({error:'Singer not found!'})
+    }
+    else{
+        singer.name = txtName;
+        singer.avatar = txtAvatar;
+        singer.link = txtLink
+        res.redirect('/')
+    }
+})
 
 module.exports = router

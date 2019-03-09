@@ -31,7 +31,7 @@ router.get('/update/:id',(req,res)=>{
 });
 
 router.post('/update-singer',(req,res)=>{
-    const { txtId, txtName, txtAvatar, txtLink} = req.body
+    const { txtId, txtName, txtAvatar, txtLink } = req.body
     let singer = arrSinger.find(singer => singer.id == txtId)
     if(!singer){
         res.send({error:'Singer not found!'})
@@ -43,5 +43,15 @@ router.post('/update-singer',(req,res)=>{
         res.redirect('/')
     }
 })
-
+router.get('/remove/:id',(req,res)=>{
+    const id = req.params.id
+    const index = arrSinger.findIndex(singer => singer.id == id)
+    if(index < 0){
+        res.send({error:'Singer not found!'})
+    }
+    else{
+        arrSinger.splice(index,1)   
+        res.redirect('/')
+    }
+})
 module.exports = router
